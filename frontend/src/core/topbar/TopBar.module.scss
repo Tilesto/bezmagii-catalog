@@ -85,33 +85,7 @@
     height: 15px;
 }
 
-.idea {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 9px;
-    border-radius: 999px;
-    background-color: var(--primary-1);
-    color: var(--on-primary);
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-
-    &:hover {
-        background-color: var(--primary-2);
-    }
-}
-
-.idea-icon {
-    width: 13px;
-    height: 13px;
-}
-
-.idea-short {
-    display: none;
-}
-
-// Телефон: кнопка идеи — только иконка, иконки площадок плотнее, «Без магИИ» прячется (выше).
+// Телефон: иконки площадок плотнее, «Без магИИ» прячется (выше).
 @include mobile {
     .inner {
         gap: 6px;
@@ -125,14 +99,5 @@
 
     .social {
         width: 24px;
-    }
-
-    .idea {
-        padding: 5px 7px;
-    }
-
-    .idea-long,
-    .idea-short {
-        display: none;
     }
 }

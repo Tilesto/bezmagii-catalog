@@ -16,8 +16,6 @@ export interface RegistryProject {
 
 export interface Registry {
     profiles?: Partial<Record<Platform, string>>;
-    /** Куда вести «Предложить идею» — под последний ролик. */
-    ideaUrl?: string;
     projects?: RegistryProject[];
 }
 
@@ -43,6 +41,5 @@ export function useBarLinks() {
         links: { ...profiles, ...videos } as Partial<Record<Platform, string>>,
         videos,
         profiles,
-        ideaUrl: data?.ideaUrl ?? BLOG.catalogUrl,
     };
 }

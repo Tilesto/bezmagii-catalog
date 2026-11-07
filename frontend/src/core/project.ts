@@ -14,7 +14,6 @@ export interface Project {
     honest: {
         totalMin: number | null;
         activeMin: number | null;
-        aiStuckMin: number | null;
         reviewed: boolean;
     };
 }

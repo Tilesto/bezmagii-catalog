@@ -2,8 +2,8 @@
   "slug": "catalog",
   "number": 0,
   "title": "Все сайты челленджа «Сайт через день»",
-  "description": "Зрители предлагают идею — я делаю сайт с ИИ и выкладываю. Честно: часы, деньги и где ИИ тупил.",
-  "version": "1.0.0",
+  "description": "Зрители предлагают идеи, я делаю из них сайты с ИИ. Показываю, сколько ушло времени и денег.",
+  "version": "1.1.0",
   "routes": [
     "/",
     "/legal/privacy"
@@ -11,7 +11,6 @@
   "honest": {
     "totalMin": null,
     "activeMin": null,
-    "aiStuckMin": null,
     "reviewed": false
   },
   "url": "https://bezmagii.site",

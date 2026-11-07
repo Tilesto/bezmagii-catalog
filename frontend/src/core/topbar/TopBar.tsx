@@ -1,14 +1,13 @@
 import { BLOG, PLATFORM_LABELS, PLATFORMS } from '../blog';
-import { Icon } from '../icons/Icon';
 import { SocialIcon } from '../icons/SocialIcon';
 import { project } from '../project';
 import { ThemeToggle } from '../theme/ThemeToggle';
 import { useBarLinks } from './registry';
 import styles from './TopBar.module.scss';
 
-/** Узкая полоса челленджа над каждым сайтом: номер, ролики про этот сайт, «предложить идею», тема. */
+/** Узкая полоса челленджа над каждым сайтом: номер, ролики про этот сайт (или профили блога), тема. */
 export function TopBar() {
-    const { links, videos, ideaUrl } = useBarLinks();
+    const { links, videos } = useBarLinks();
 
     return (
         <div className={styles.bar}>
@@ -41,12 +40,6 @@ export function TopBar() {
                         </a>
                     ))}
                 </nav>
-
-                <a className={styles.idea} href={ideaUrl} target="_blank" rel="noopener" aria-label="Предложить идею следующего сайта" data-audit="topbar-idea">
-                    <Icon name="idea" className={styles.ideaIcon} />
-                    <span className={styles.ideaLong}>Предложить идею</span>
-                    <span className={styles.ideaShort}>Идея?</span>
-                </a>
 
                 <ThemeToggle />
             </div>

@@ -38,7 +38,33 @@ const badge = project.number > 0 ? `Сайт через день #${project.numb
 const titleLines = wrap(project.title, 22);
 const titleSize = titleLines.length > 2 ? 76 : 92;
 
-const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+// Каталог — лицо блога: бумажный фон и кот с ноутбуком (public/mascot/cat.svg) вместо плашки.
+const PAPER = '#fbf5ea';
+const INK = '#1b1b1f';
+const INK_MUTED = '#6f6453';
+const MARKER = '#ffd25a';
+const CAT_ORANGE = '#f2a65a';
+const catSvg = readFileSync(here('../public/mascot/cat.svg'), 'utf8')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace('<svg ', '<svg x="760" y="70" width="400" height="436" ');
+
+const og =
+    project.number === 0
+        ? `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="${PAPER}"/>
+  <text x="80" y="128" font-family="${FONT}" font-size="34" fill="${INK_MUTED}">Челлендж блога <tspan font-weight="800" fill="${INK}">Без маг</tspan><tspan font-weight="800" fill="${CAT_ORANGE}">ИИ</tspan></text>
+  <text x="80" y="250" font-family="${FONT}" font-size="112" font-weight="800" letter-spacing="-4" fill="${INK}">Сайт</text>
+  <rect x="70" y="318" width="590" height="46" rx="18" fill="${MARKER}" transform="rotate(-1.2 365 341)"/>
+  <text x="80" y="356" font-family="${FONT}" font-size="112" font-weight="800" letter-spacing="-4" fill="${INK}">через день</text>
+  ${wrap((project.description ?? '').split('. ')[0].replace(/\.?$/, '.'), 36)
+      .slice(0, 2)
+      .map((line, i) => `<text x="80" y="${440 + i * 46}" font-family="${FONT}" font-size="34" fill="${INK_MUTED}">${esc(line)}</text>`)
+      .join('\n  ')}
+  <text x="80" y="560" font-family="${FONT}" font-size="32" font-weight="700" fill="${INK}">${esc(host)}</text>
+  ${catSvg}
+  <rect x="740" y="500" width="440" height="10" rx="5" fill="${INK}"/>
+</svg>`
+        : `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="${BG}"/>
   <rect x="80" y="80" width="${badge.length * 17 + 48}" height="56" rx="28" fill="${ACCENT}"/>
   <text x="104" y="118" font-family="${FONT}" font-size="30" font-weight="700" fill="#0f0e1c">${esc(badge)}</text>
@@ -63,8 +89,10 @@ const render = (svg, width) =>
     new Resvg(svg, { fitTo: { mode: 'width', value: width }, font: { loadSystemFonts: true, defaultFontFamily: 'Helvetica' } }).render().asPng();
 
 writeFileSync(`${publicDir}og.png`, render(og, 1200));
-writeFileSync(`${publicDir}favicon.svg`, iconSvg(64));
-writeFileSync(`${publicDir}apple-touch-icon.png`, render(iconSvg(180), 180));
-writeFileSync(`${publicDir}icon-192.png`, render(iconSvg(192), 192));
-writeFileSync(`${publicDir}icon-512.png`, render(iconSvg(512), 512));
+const avatar = readFileSync(here('../public/mascot/avatar.svg'), 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+const icon = project.number === 0 ? () => avatar : iconSvg;
+writeFileSync(`${publicDir}favicon.svg`, project.number === 0 ? avatar : iconSvg(64));
+writeFileSync(`${publicDir}apple-touch-icon.png`, render(icon(180), 180));
+writeFileSync(`${publicDir}icon-192.png`, render(icon(192), 192));
+writeFileSync(`${publicDir}icon-512.png`, render(icon(512), 512));
 console.log(`og: ${badge} · ${project.title} → public/og.png + иконки`);

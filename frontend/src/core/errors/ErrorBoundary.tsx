@@ -23,7 +23,7 @@ export class ErrorBoundary extends Component<{ children: ReactNode }, { error: E
         return (
             <ErrorScreen
                 title="Что-то сломалось"
-                text="Ошибка уже записана — починю. Попробуйте обновить страницу."
+                text="Ошибка уже записана, починю. Попробуйте обновить страницу."
                 action={
                     <button type="button" className={styles.retry} onClick={() => location.reload()}>
                         Обновить

@@ -22,7 +22,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#fbf5ea" />
 
     <!-- Тема до отрисовки: без вспышки не той темы. Выбор пользователя или системная. -->
     <script>
@@ -32,7 +32,7 @@
         var dark = t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
         document.documentElement.dataset.theme = dark ? 'dark' : 'light';
         var m = document.querySelector('meta[name="theme-color"]');
-        if (m) m.setAttribute('content', dark ? '#121211' : '#ffffff');
+        if (m) m.setAttribute('content', dark ? '#16131e' : '#fbf5ea');
       })();
     </script>
   </head>

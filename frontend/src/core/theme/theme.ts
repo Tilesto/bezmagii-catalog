@@ -6,7 +6,6 @@ import { storageGet, storageRemove, storageSet } from '../storage';
 export type Theme = 'light' | 'dark';
 
 const KEY = 'bm.theme';
-const THEME_COLORS: Record<Theme, string> = { light: '#ffffff', dark: '#121211' };
 const darkQuery = () => window.matchMedia('(prefers-color-scheme: dark)');
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -24,8 +23,11 @@ export function currentTheme(): Theme {
 }
 
 function apply(theme: Theme): void {
-    document.documentElement.dataset.theme = theme;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', THEME_COLORS[theme]);
+    const root = document.documentElement;
+    root.dataset.theme = theme;
+    // Цвет адресной строки = фон страницы из палитры (_palette.scss → --base-0), не хардкод.
+    const bg = getComputedStyle(root).getPropertyValue('--base-0').trim();
+    if (bg) document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bg);
 }
 
 /**

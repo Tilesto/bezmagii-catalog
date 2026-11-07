@@ -1,0 +1,84 @@
+@use 'mixins' as *;
+
+.dialog {
+    @include sticker(5px);
+    width: min(400px, calc(100vw - 32px));
+    padding: 20px;
+    color: var(--base-100);
+
+    &::backdrop {
+        background-color: var(--backdrop);
+    }
+
+    &[open] {
+        animation: pop 180ms ease-out;
+    }
+}
+
+@keyframes pop {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.97);
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.close {
+    @include reset-button;
+    @include focus-ring;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--base-60);
+
+    &:hover {
+        color: var(--base-100);
+        background-color: var(--base-10);
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.text {
+    margin-top: 10px;
+    color: var(--base-80);
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.platform {
+    @include sticker-button(var(--card), var(--base-100));
+    justify-content: flex-start;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: var(--brBase);
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}

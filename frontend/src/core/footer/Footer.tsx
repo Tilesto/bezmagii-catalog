@@ -9,13 +9,13 @@ import { useCounters } from '../stats/useCounters';
 import { useBarLinks } from '../topbar/registry';
 import styles from './Footer.module.scss';
 
-/** Одинаковый во всех сайтах подвал: счётчики, профили блога, честные цифры, версия, документы. */
+/** Одинаковый во всех сайтах подвал: счётчики, профили блога, честные цифры, версия, документы, почта. */
 export function Footer() {
     const { profiles } = useBarLinks();
     const counters = useCounters();
     const [changelogOpen, setChangelogOpen] = useState(false);
     const { honest } = project;
-    const { requisites } = BLOG;
+    const { email } = BLOG.requisites;
 
     return (
         <footer className={styles.footer}>
@@ -54,12 +54,12 @@ export function Footer() {
                     <p className={styles.honest}>
                         Сделано за {formatMinutes(honest.totalMin)}
                         {honest.activeMin !== null && <> · активно {formatMinutes(honest.activeMin)}</>}
-                        {honest.aiStuckMin !== null && <> · ИИ тупил {formatMinutes(honest.aiStuckMin)}</>}
                     </p>
                 )}
 
                 <p className={styles.links}>
-                    <a href={BLOG.catalogUrl} data-audit="footer-catalog">
+                    {/* в каталоге — просто прокрутка к списку, на остальных сайтах — сразу к нему же */}
+                    <a href={project.number === 0 ? '#sites' : `${BLOG.catalogUrl}/#sites`} data-audit="footer-catalog">
                         Все сайты челленджа
                     </a>
                     <a href={BLOG.privacyUrl} target="_blank" rel="noopener" data-audit="footer-privacy">
@@ -70,9 +70,9 @@ export function Footer() {
                     </button>
                 </p>
 
-                <p className={styles.requisites}>
-                    {requisites.name}, {requisites.status}, ИНН {requisites.inn} ·{' '}
-                    <a href={`mailto:${requisites.email}`}>{requisites.email}</a>
+                {/* Оплату сайты не принимают, поэтому реквизиты не нужны: они есть в политике ПД, тут только почта. */}
+                <p className={styles.contact}>
+                    <a href={`mailto:${email}`}>{email}</a>
                 </p>
             </div>
             <ChangelogDialog open={changelogOpen} onClose={() => setChangelogOpen(false)} />

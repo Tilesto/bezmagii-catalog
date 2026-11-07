@@ -1,19 +1,20 @@
 @use 'mixins' as *;
 
 .card {
+    @include sticker;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 16px;
-    min-height: 132px;
-    padding: 16px;
-    border: 1px solid var(--base-20);
-    border-radius: var(--brLarge);
-    background-color: var(--base-0);
-    transition: border-color 150ms ease;
+    min-height: 140px;
+    padding: 18px;
+    transition:
+        transform 120ms ease,
+        box-shadow 120ms ease;
 
     &:hover {
-        border-color: var(--base-40);
+        transform: translate(-2px, -2px) rotate(-0.6deg);
+        box-shadow: calc(var(--lift) + 2px) calc(var(--lift) + 2px) 0 var(--shade);
     }
 }
 
@@ -33,13 +34,15 @@
 .number {
     color: var(--primary-1);
     font-family: var(--fontMono);
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
 }
 
 .title {
-    font-size: 18px;
-    font-weight: 700;
+    margin-top: 8px;
+    font-size: 19px;
+    font-weight: 800;
     line-height: 1.25;
 }
 
