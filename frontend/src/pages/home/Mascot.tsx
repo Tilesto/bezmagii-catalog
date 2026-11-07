@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 /**
  * React не пишет атрибут muted в DOM, а без него браузеры (особенно iOS Safari) не дают
  * автозапуск. Ставим его сами и запускаем вручную.
@@ -14,28 +12,14 @@ function autoplay(video: HTMLVideoElement | null) {
     });
 }
 
-const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 /**
  * Печатающий кот (brand/mascot/anim/cat-typing, 660×720, прозрачный фон).
  * Safari умеет прозрачность только в HEVC (.mov, hvc1) — он идёт первым: Chrome и Firefox
- * такой тип не берут и переходят к VP9 .webm. При reduced motion — статичный SVG.
+ * такой тип не берут и переходят к VP9 .webm. Анимируется у всех, в том числе при «уменьшить
+ * движение» (решение владельца 2026-11-07): кот небольшой и без резких движений.
  */
 export function Mascot({ className }: { className?: string }) {
-    const [still, setStill] = useState(reducedMotion);
-
-    useEffect(() => {
-        const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-        const listener = () => setStill(query.matches);
-        query.addEventListener('change', listener);
-        return () => query.removeEventListener('change', listener);
-    }, []);
-
     const alt = 'Рыжий кот в колпаке волшебника печатает на ноутбуке и радостно вскидывает лапы';
-
-    if (still) {
-        return <img className={className} src="/mascot/cat.svg" width={660} height={720} alt={alt} />;
-    }
 
     return (
         <video
