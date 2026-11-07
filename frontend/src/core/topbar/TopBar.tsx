@@ -42,7 +42,7 @@ export function TopBar() {
                     ))}
                 </nav>
 
-                <a className={styles.idea} href={ideaUrl} target="_blank" rel="noopener" data-audit="topbar-idea">
+                <a className={styles.idea} href={ideaUrl} target="_blank" rel="noopener" aria-label="Предложить идею следующего сайта" data-audit="topbar-idea">
                     <Icon name="idea" className={styles.ideaIcon} />
                     <span className={styles.ideaLong}>Предложить идею</span>
                     <span className={styles.ideaShort}>Идея?</span>

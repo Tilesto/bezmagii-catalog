@@ -1,0 +1,55 @@
+@use 'mixins' as *;
+
+.doc {
+    max-width: 760px;
+    font-size: 15px;
+    line-height: 1.6;
+
+    h1 {
+        font-size: 30px;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+
+        @include mobile {
+            font-size: 24px;
+        }
+    }
+
+    h2 {
+        margin-top: 28px;
+        margin-bottom: 8px;
+        font-size: 19px;
+    }
+
+    p + p {
+        margin-top: 8px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    th,
+    td {
+        padding: 8px 10px;
+        border: 1px solid var(--base-20);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: var(--base-5);
+    }
+}
+
+.meta {
+    margin-top: 8px;
+    color: var(--base-60);
+    font-size: 14px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}

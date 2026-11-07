@@ -3,6 +3,8 @@
 .layout {
     display: grid;
     grid-template-rows: auto 1fr auto;
+    // minmax(0, …): широкий контент (таблица, код) не раздвигает страницу, а скроллится внутри себя.
+    grid-template-columns: minmax(0, 1fr);
     min-height: 100dvh;
 }
 

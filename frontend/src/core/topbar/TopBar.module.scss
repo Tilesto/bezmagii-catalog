@@ -111,12 +111,28 @@
     display: none;
 }
 
+// Телефон: кнопка идеи — только иконка, иконки площадок плотнее, «Без магИИ» прячется (выше).
 @include mobile {
-    .idea-long {
-        display: none;
+    .inner {
+        gap: 6px;
+        padding-right: max(12px, env(safe-area-inset-right));
+        padding-left: max(12px, env(safe-area-inset-left));
     }
 
+    .title {
+        font-size: 12px;
+    }
+
+    .social {
+        width: 24px;
+    }
+
+    .idea {
+        padding: 5px 7px;
+    }
+
+    .idea-long,
     .idea-short {
-        display: inline;
+        display: none;
     }
 }

@@ -3,42 +3,212 @@
 .page {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-}
-
-.title {
-    font-size: 40px;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    gap: 56px;
 
     @include mobile {
-        font-size: 30px;
+        gap: 40px;
     }
 }
 
-.lead {
-    max-width: 560px;
-    font-size: 18px;
-    color: var(--base-60);
+.hero {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 24px;
+
+    @include mobile {
+        padding-top: 8px;
+    }
 }
 
-.demo {
+.kicker {
+    color: var(--base-60);
+    font-size: 15px;
+}
+
+.brand {
+    color: var(--base-100);
+    font-weight: 700;
+}
+
+.accent {
+    color: var(--primary-1);
+}
+
+.title {
+    font-size: clamp(44px, 9vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+}
+
+.lead {
+    max-width: 620px;
+    font-size: 19px;
+    color: var(--base-80);
+
+    @include mobile {
+        font-size: 17px;
+    }
+}
+
+.actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 8px;
 }
 
-.secondary {
-    @include reset-button;
+.primary {
     @include focus-ring;
-    padding: 10px 16px;
-    border: 1px solid var(--base-20);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
     border-radius: var(--brBase);
-    background-color: var(--base-5);
-    font-weight: 600;
+    background-color: var(--primary-1);
+    color: var(--on-primary);
+    font-weight: 700;
+    text-decoration: none;
 
     &:hover {
-        border-color: var(--base-40);
+        background-color: var(--primary-2);
+    }
+}
+
+.action-icon {
+    width: 18px;
+    height: 18px;
+}
+
+// ShareButton из ядра — перекрашиваем во вторичную.
+.secondary {
+    background-color: var(--base-5);
+    color: var(--base-100);
+    border: 1px solid var(--base-20);
+
+    &:hover {
+        background-color: var(--base-10);
+    }
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section-title {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+}
+
+.count {
+    color: var(--base-40);
+    font-family: var(--fontMono);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.upcoming {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    min-height: 132px;
+    padding: 16px;
+    border: 1px dashed var(--base-20);
+    border-radius: var(--brLarge);
+    color: var(--base-60);
+
+    @include mobile {
+        flex-direction: row;
+        align-items: center;
+        min-height: 0;
+        gap: 12px;
+        padding: 12px 16px;
+    }
+}
+
+.upcoming-number {
+    font-family: var(--fontMono);
+    font-size: 15px;
+}
+
+.upcoming-text {
+    font-size: 15px;
+}
+
+.steps {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+
+    li {
+        position: relative;
+        padding: 14px 16px 14px 56px;
+        border-radius: var(--brBase);
+        background-color: var(--base-5);
+        counter-increment: step;
+
+        &::before {
+            content: counter(step);
+            position: absolute;
+            top: 12px;
+            left: 14px;
+            display: grid;
+            place-items: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: var(--primary-soft);
+            color: var(--primary-1);
+            font-weight: 700;
+            font-size: 14px;
+        }
+    }
+}
+
+.rules {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        padding-left: 30px;
+        position: relative;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 700;
+        }
+    }
+
+    .yes::before {
+        content: '✓';
+        color: var(--success);
+    }
+
+    .no::before {
+        content: '✕';
+        color: var(--danger);
     }
 }

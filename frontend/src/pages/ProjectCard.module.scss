@@ -1,0 +1,96 @@
+@use 'mixins' as *;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 132px;
+    padding: 16px;
+    border: 1px solid var(--base-20);
+    border-radius: var(--brLarge);
+    background-color: var(--base-0);
+    transition: border-color 150ms ease;
+
+    &:hover {
+        border-color: var(--base-40);
+    }
+}
+
+.link {
+    @include focus-ring;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover .title {
+        color: var(--primary-1);
+    }
+}
+
+.number {
+    color: var(--primary-1);
+    font-family: var(--fontMono);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.host {
+    color: var(--base-60);
+    font-size: 13px;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 28px;
+}
+
+.counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--base-60);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+.counter-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.videos {
+    display: flex;
+    gap: 2px;
+    margin-left: auto;
+}
+
+.video {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--brSmall);
+    color: var(--base-60);
+
+    &:hover {
+        color: var(--base-100);
+        background-color: var(--base-10);
+    }
+}
+
+.video-icon {
+    width: 16px;
+    height: 16px;
+}
