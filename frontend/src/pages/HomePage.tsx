@@ -67,8 +67,6 @@ export function HomePage() {
                 </div>
             </section>
 
-            <Why />
-
             <section id="sites" className={styles.section} aria-labelledby="sites-title">
                 <h2 id="sites-title" className={styles.sectionTitle}>
                     Сайты
@@ -104,6 +102,8 @@ export function HomePage() {
                     ))}
                 </ol>
             </section>
+
+            <Why />
 
             <div className={styles.split}>
                 <section className={styles.section} aria-labelledby="rules-title">
