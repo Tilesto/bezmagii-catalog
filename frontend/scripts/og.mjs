@@ -38,7 +38,7 @@ const badge = project.number > 0 ? `Сайт через день #${project.numb
 const titleLines = wrap(project.title, 22);
 const titleSize = titleLines.length > 2 ? 76 : 92;
 
-// Каталог — лицо блога: бумажный фон и кот с ноутбуком (public/mascot/cat.svg) вместо плашки.
+// Каталог — лицо блога: бумажный фон и кот за клавиатурой и монитором (public/mascot/cat.svg) вместо плашки.
 const PAPER = '#fbf5ea';
 const INK = '#1b1b1f';
 const INK_MUTED = '#6f6453';
@@ -46,7 +46,7 @@ const MARKER = '#ffd25a';
 const CAT_ORANGE = '#f2a65a';
 const catSvg = readFileSync(here('../public/mascot/cat.svg'), 'utf8')
     .replace(/<!--[\s\S]*?-->/g, '')
-    .replace('<svg ', '<svg x="760" y="70" width="400" height="436" ');
+    .replace('<svg ', '<svg x="716" y="160" width="468" height="351" ');
 
 const og =
     project.number === 0

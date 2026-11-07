@@ -13,7 +13,7 @@
 // ── первый экран: текст слева, кот справа (на телефоне кот сверху) ──────────
 .hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 330px;
+    grid-template-columns: minmax(0, 1fr) 440px;
     align-items: end;
     gap: 24px;
     padding-top: 16px;
@@ -127,7 +127,7 @@
     flex-direction: column;
     align-items: center;
 
-    // «стол», на котором стоит ноутбук: заодно прячет обрез обводки внизу кадра
+    // «стол» под сценой: заодно прячет обрез тени внизу кадра
     &::after {
         content: '';
         position: absolute;
@@ -143,10 +143,8 @@
         order: 1;
         align-self: center;
         width: 100%;
-        max-width: 360px;
+        max-width: 440px;
         margin: 0 auto;
-        flex-direction: row;
-        align-items: flex-end;
     }
 }
 
@@ -154,11 +152,6 @@
     width: 100%;
     height: auto;
 
-    @include tablet {
-        flex: none;
-        width: 190px;
-        margin-left: -8px;
-    }
 }
 
 // облачко реплики кота: хвостик смотрит вниз, на кота
@@ -189,19 +182,6 @@
         transform: rotate(45deg) skew(8deg, 8deg);
     }
 
-    @include tablet {
-        align-self: center;
-        flex: 1;
-        margin: 0 0 120px;
-
-        // на телефоне облачко слева от кота — хвостик вправо
-        &::after {
-            bottom: 14px;
-            left: auto;
-            right: -11px;
-            transform: rotate(-45deg) skew(8deg, 8deg);
-        }
-    }
 }
 
 .bubble-number {

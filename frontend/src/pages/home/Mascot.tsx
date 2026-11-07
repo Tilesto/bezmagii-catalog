@@ -13,19 +13,20 @@ function autoplay(video: HTMLVideoElement | null) {
 }
 
 /**
- * Печатающий кот (brand/mascot/anim/cat-typing, 660×720, прозрачный фон).
+ * Кот за клавиатурой, справа монитор с кодом (brand/mascot/anim/cat-desk-typing, 960×720,
+ * прозрачный фон). Постер — та же сцена в покое (brand/mascot/styles/video-cat-desk.svg).
  * Safari умеет прозрачность только в HEVC (.mov, hvc1) — он идёт первым: Chrome и Firefox
  * такой тип не берут и переходят к VP9 .webm. Анимируется у всех, в том числе при «уменьшить
  * движение» (решение владельца 2026-11-07): кот небольшой и без резких движений.
  */
 export function Mascot({ className }: { className?: string }) {
-    const alt = 'Рыжий кот в колпаке волшебника печатает на ноутбуке и радостно вскидывает лапы';
+    const alt = 'Рыжий кот в колпаке волшебника печатает на клавиатуре и радостно вскидывает лапы';
 
     return (
         <video
             ref={autoplay}
             className={className}
-            width={660}
+            width={960}
             height={720}
             poster="/mascot/cat.svg"
             autoPlay
@@ -35,8 +36,8 @@ export function Mascot({ className }: { className?: string }) {
             disablePictureInPicture
             aria-label={alt}
         >
-            <source src="/mascot/cat-typing.mov" type='video/quicktime; codecs="hvc1"' />
-            <source src="/mascot/cat-typing.webm" type="video/webm" />
+            <source src="/mascot/cat-desk-typing.mov" type='video/quicktime; codecs="hvc1"' />
+            <source src="/mascot/cat-desk-typing.webm" type="video/webm" />
         </video>
     );
 }
