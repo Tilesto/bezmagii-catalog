@@ -48,7 +48,7 @@ export function HomePage() {
                     </h1>
                     <p className={styles.lead}>
                         Вы предлагаете идеи в комментариях. Самую залайканную я делаю вместе с ИИ и выкладываю в прод, а в
-                        ролике показываю, сколько на это ушло времени и денег.
+                        ролике показываю, сколько на это ушло времени.
                     </p>
                     <div className={styles.actions}>
                         <button type="button" className={styles.primary} onClick={() => setIdeaOpen(true)} data-audit="hero-idea">
