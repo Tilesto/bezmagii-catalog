@@ -38,9 +38,12 @@
     <path d="M50 352 L390 352" stroke="#3B3E46" stroke-width="4"/>
     <!-- наклейка на крышке: тот же знак -->
     <circle cx="220" cy="410" r="30" fill="#FFF7E0" stroke-width="4"/>
+    <!-- звезда с кольцом по центру наклейки (круг cy=410) -->
+    <g transform="translate(0 4)">
     <path d="M220 391 L224.2 400.4 L234.4 401.5 L226.8 408.4 L228.9 418.5 L220 413.4 L211.1 418.5 L213.2 408.4 L205.6 401.5 L215.8 400.4 Z" fill="#FFD25A" stroke-width="2.5"/>
     <circle cx="220" cy="406" r="20" fill="none" stroke="#E5484D" stroke-width="5"/>
     <path d="M206 392 L234 420" stroke="#E5484D" stroke-width="5"/>
+    </g>
     <!-- лапы на крышке -->
     <ellipse cx="146" cy="338" rx="34" ry="20" fill="#F7BE80" stroke-width="6"/>
     <ellipse cx="294" cy="338" rx="34" ry="20" fill="#F7BE80" stroke-width="6"/>

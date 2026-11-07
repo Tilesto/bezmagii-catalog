@@ -47,13 +47,15 @@ export function NopeStar({ className }: { className?: string }) {
         <svg className={className} viewBox="0 0 48 48" aria-hidden="true" focusable="false">
             <g stroke="var(--ink)" strokeLinejoin="round" strokeLinecap="round">
                 <circle cx="24" cy="24" r="22" fill="var(--card)" strokeWidth="2.5" />
+                {/* центр описанной окружности звезды — y≈22.7, сдвиг на 1.3 ставит её в центр круга (24) */}
                 <path
+                    transform="translate(0 1.3)"
                     d="M24 10.5 27.4 18.1 35.6 19 29.5 24.5 31.2 32.6 24 28.5 16.8 32.6 18.5 24.5 12.4 19 20.6 18.1Z"
                     fill="var(--star)"
                     strokeWidth="2"
                 />
-                <circle cx="24" cy="22" r="14.5" fill="none" stroke="var(--nope)" strokeWidth="3.5" />
-                <path d="M13.8 11.8 34.2 32.2" stroke="var(--nope)" strokeWidth="3.5" />
+                <circle cx="24" cy="24" r="14.5" fill="none" stroke="var(--nope)" strokeWidth="3.5" />
+                <path d="M13.8 13.8 34.2 34.2" stroke="var(--nope)" strokeWidth="3.5" />
             </g>
         </svg>
     );

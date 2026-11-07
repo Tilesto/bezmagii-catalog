@@ -6,6 +6,7 @@ import { ProjectCard } from './ProjectCard';
 import { Mascot, NopeStar } from './home/Mascot';
 import { IdeaDialog } from './home/IdeaDialog';
 import { Receipt, type ProjectWithHonest } from './home/Receipt';
+import { Why } from './home/Why';
 import styles from './HomePage.module.scss';
 
 const STEPS = [
@@ -65,6 +66,8 @@ export function HomePage() {
                     <Mascot className={styles.cat} />
                 </div>
             </section>
+
+            <Why />
 
             <section id="sites" className={styles.section} aria-labelledby="sites-title">
                 <h2 id="sites-title" className={styles.sectionTitle}>

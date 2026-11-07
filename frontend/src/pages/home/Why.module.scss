@@ -1,0 +1,92 @@
+@use 'mixins' as *;
+
+.why {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scroll-margin-top: calc(var(--hTopBar) + 20px);
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+
+    @include mobile {
+        font-size: 26px;
+    }
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include tablet {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+}
+
+.item {
+    @include sticker;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+
+    // третий тезис главный: выделен цветом кота
+    &:last-child {
+        background-color: var(--cat-soft);
+    }
+}
+
+// значок тезиса: кружок-стикер 44 px
+.mark {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 4px;
+
+    &[data-kind] {
+        border: var(--stroke) solid var(--ink);
+        border-radius: 50%;
+    }
+
+    &[data-kind='tool'] {
+        background-color: var(--star);
+
+        svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--cat);
+            stroke: var(--ink);
+            stroke-width: 1.8;
+            stroke-linejoin: round;
+        }
+    }
+
+    &[data-kind='money'] {
+        background-color: var(--cat);
+        color: var(--on-cat);
+        font-size: 22px;
+        font-weight: 800;
+    }
+}
+
+.head {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.text {
+    color: var(--base-80);
+    font-size: 15px;
+    line-height: 1.5;
+}
