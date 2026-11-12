@@ -21,7 +21,8 @@ export function HomePage() {
     const projects = ((registry.data?.projects ?? []) as ProjectWithHonest[])
         .filter((p) => p.number > 0)
         .sort((a, b) => b.number - a.number);
-    const next = (projects[0]?.number ?? 0) + 1;
+    // Номера бывают дробными (2.1 — доп. сайт к выпуску 2): следующий — целый.
+    const next = Math.floor(projects[0]?.number ?? 0) + 1;
     const [ideaOpen, setIdeaOpen] = useState(false);
 
     // Пришли по ссылке «Все сайты челленджа» с другого сайта (…/#sites): браузер прокручивает к якорю
